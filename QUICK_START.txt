@@ -1,0 +1,31 @@
+# QUICK COMMAND LIST
+# Copy and paste these commands in order into your terminal.
+
+# 1. GIT SETUP
+cd C:\Users\shiva\Desktop\krishi-net
+git init
+git add .
+git commit -m "Deployment ready"
+
+# 2. GITHUB PUSH (Replace [YOUR-USERNAME] and [REPO-URL])
+# Go to https://github.com/new -> Create repo "krishi-net"
+git remote add origin https://github.com/[YOUR-USERNAME]/krishi-net.git
+git branch -M main
+git push -u origin main
+
+# 3. RAILWAY SETUP
+# Go to https://railway.app -> New Project -> Deploy from GitHub repo -> krishi-net
+# Add Variables (SECRET_KEY, DATABASE_URL)
+# wait for URL...
+
+# 4. UPDATE MOBILE CONFIG (Replace URL first!)
+# Open mobile/app.json.prod -> Replace URL -> Copy content to mobile/app.json
+
+# 5. BUILD APK
+cd C:\Users\shiva\Desktop\krishi-net\mobile
+npm install -g eas-cli
+eas login
+npx eas build --platform android --profile production
+
+# 6. DOWNLOAD & INSTALL
+# Click link in terminal -> Download .apk
