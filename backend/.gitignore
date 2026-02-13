@@ -8,3 +8,4 @@ venv/
 uploads/
 *.h5
 .pytest_cache/
+/src/generated/prisma

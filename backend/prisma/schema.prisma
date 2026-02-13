@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  created_at   DateTime @default(now())
+  scans        Scan[]
+}
+
+model Scan {
+  id          String   @id @default(uuid())
+  disease     String
+  confidence  Float
+  severity    String
+  treatment   String[]
+  created_at  DateTime @default(now())
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+}
